@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>NBA Teams Web Service Demo</title>
+<title>Cafes Web Service Demo</title>
 <style>
   body {font-family:georgia;}
   .team{
@@ -26,15 +26,13 @@
 
 <script type="text/javascript">
 
-function nbaTemplate(team){
-  return `<div class="team">
-      <b>Title: <b> ${team.Name}<br />
-      <b>Location: <b> ${team.Location}<br />
-      <b>Division: <b> ${team.Division}<br />
-      <b>Championships: <b> ${team.Championships}<br />
-      <b>Last Championship: <b> ${team.LastChip}<br />
+function CafeTemplate(cafes){
+  return `<div class="cafes">
+      <b>Title: <b> ${cafes.Name}<br />
+      <b>Location: <b> ${cafes.Location}<br />
+      <b>Location: <b> ${cafes.Location}<br />
 
-      <div class="pic"><img src="thumbnails/${team.Image}"/></div>
+      <div class="pic"><img src="thumbnails/${cafes.Image}"/></div>
     </div>`;
 }
   
@@ -51,17 +49,17 @@ $(document).ready(function() {
       request.done(function( data ) {
        console.log(data);
         // place the title on the page
-        $("#nbatitle").html(data.title);
+        $("#cafetitle").html(data.title);
 
         // clears the previous films
-        $("#nbateams").html("");
+        $("#cafes").html("");
         
         // loops through films and adds to page
         $.each(data.teams, function(key,value){
 
-          let str = nbaTemplate(value); // is the array
+          let str = cafe(value); // is the array
 
-          $("<div></div>").html(str).appendTo("#nbateams");
+          $("<div></div>").html(str).appendTo("#cafe");
           
         });
 
@@ -84,9 +82,9 @@ $(document).ready(function() {
 </script>
 </head>
 	<body>
-	<h1>NBA Teams Web Service</h1>
-		<a href="year" class="category">NBA Teams</a><br />
-		<a href="box" class="category">NBA Teams By Championships</a>
+	<h1>Cafe's in Seattle Web Service</h1>
+		<a href="year" class="category">Cafe in Seattle</a><br />
+		<a href="box" class="category">List of Cafes</a>
 		<h3 id="cafetitle">Title Will Go Here</h3>
 		<div id="cafeseattle">
 			<p>Cafe Title will go here</p>
