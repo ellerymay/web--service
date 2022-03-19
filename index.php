@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>League of Legends Web Service Demo</title>
+<title>NBA Teams Web Service Demo</title>
 <style>
   body {font-family:georgia;}
   .team{
@@ -16,13 +16,16 @@
     right:10px;
     top:10px;
   }
+
   .pic img{
     max-width:70px;
   }
+
 </style>
 <script src="https://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
 
 <script type="text/javascript">
+
 function nbaTemplate(team){
   return `<div class="team">
       <b>Title: <b> ${team.Name}<br />
@@ -30,11 +33,13 @@ function nbaTemplate(team){
       <b>Division: <b> ${team.Division}<br />
       <b>Championships: <b> ${team.Championships}<br />
       <b>Last Championship: <b> ${team.LastChip}<br />
+
       <div class="pic"><img src="thumbnails/${team.Image}"/></div>
     </div>`;
 }
   
 $(document).ready(function() {  
+
 	$('.category').click(function(e){
         e.preventDefault(); //stop default action of the link
 		cat = $(this).attr("href");  //get category from URL
@@ -47,15 +52,19 @@ $(document).ready(function() {
        console.log(data);
         // place the title on the page
         $("#nbatitle").html(data.title);
+
         // clears the previous films
         $("#nbateams").html("");
         
         // loops through films and adds to page
         $.each(data.teams, function(key,value){
+
           let str = nbaTemplate(value); // is the array
+
           $("<div></div>").html(str).appendTo("#nbateams");
           
         });
+
         //view JSON as a string
         /*
         let myData = JSON.stringify(data, null, 4);
@@ -71,15 +80,16 @@ $(document).ready(function() {
     );
 	});
 });	
+
 </script>
 </head>
 	<body>
 	<h1>NBA Teams Web Service</h1>
 		<a href="year" class="category">NBA Teams</a><br />
 		<a href="box" class="category">NBA Teams By Championships</a>
-		<h3 id="nbatitle">Title Will Go Here</h3>
-		<div id="nbateams">
-			<p>NBA Teams will go here</p>
+		<h3 id="cafetitle">Title Will Go Here</h3>
+		<div id="cafeseattle">
+			<p>Cafe Title will go here</p>
 		</div>
     <!-- <div class="film">
       <b>Film: <b> 1<br />
@@ -92,6 +102,7 @@ $(document).ready(function() {
       <b>Bond: <b> Sean Connery<br />
       <b>Budget: <b> $1,000,000.00<br />
       <b>BoxOffice: <b> $59,567,035.00<br />
+
       <div class="pic"><img src="thumbnails/dr-no.jpg"/></div>
     </div> -->
 		<div id="output">Results go here</div>
