@@ -3,7 +3,7 @@
 <title>Cafes Web Service Demo</title>
 <style>
   body {font-family:georgia;}
-  .team{
+  .cafes{
     border:1px solid #E77DC2;
     border-radius: 5px;
     padding: 5px;
@@ -26,7 +26,7 @@
 
 <script type="text/javascript">
 
-function CafeTemplate(cafes){
+function cafeTemplate(cafes){
   return `<div class="cafes">
       <b>Title: <b> ${cafes.Name}<br />
       <b>Location: <b> ${cafes.Location}<br />
@@ -49,17 +49,17 @@ $(document).ready(function() {
       request.done(function( data ) {
        console.log(data);
         // place the title on the page
-        $("#cafetitle").html(data.title);
+        $("#cafestitle").html(data.title);
 
         // clears the previous films
         $("#cafes").html("");
         
         // loops through films and adds to page
-        $.each(data.teams, function(key,value){
+        $.each(data.cafes, function(key,value){
 
-          let str = cafe(value); // is the array
+          let str = cafes(value); // is the array
 
-          $("<div></div>").html(str).appendTo("#cafe");
+          $("<div></div>").html(str).appendTo("#cafes");
           
         });
 
