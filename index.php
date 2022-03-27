@@ -1,9 +1,9 @@
 <html>
 <head>
-<title>Cafes Web Service Demo</title>
+<title>Cafe's in Seattle Web Service Demo</title>
 <style>
   body {font-family:georgia;}
-  .cafes{
+  .team{
     border:1px solid #E77DC2;
     border-radius: 5px;
     padding: 5px;
@@ -26,13 +26,15 @@
 
 <script type="text/javascript">
 
-function cafeTemplate(cafes){
-  return `<div class="cafes">
-      <b>Title: <b> ${cafes.Name}<br />
-      <b>Location: <b> ${cafes.Location}<br />
-      <b>Location: <b> ${cafes.Location}<br />
+function nbaTemplate(team){
+  return `<div class="team">
+      <b>Title: <b> ${team.Name}<br />
+      <b>Location: <b> ${team.Location}<br />
+      <b>Division: <b> ${team.Division}<br />
+      <b>Championships: <b> ${team.Championships}<br />
+      <b>Last Championship: <b> ${team.LastChip}<br />
 
-      <div class="pic"><img src="thumbnails/${cafes.Image}"/></div>
+      <div class="pic"><img src="thumbnails/${team.Image}"/></div>
     </div>`;
 }
   
@@ -49,17 +51,17 @@ $(document).ready(function() {
       request.done(function( data ) {
        console.log(data);
         // place the title on the page
-        $("#cafestitle").html(data.title);
+        $("#nbatitle").html(data.title);
 
         // clears the previous films
-        $("#cafes").html("");
+        $("#nbateams").html("");
         
         // loops through films and adds to page
-        $.each(data.cafes, function(key,value){
+        $.each(data.teams, function(key,value){
 
-          let str = cafes(value); // is the array
+          let str = nbaTemplate(value); // is the array
 
-          $("<div></div>").html(str).appendTo("#cafes");
+          $("<div></div>").html(str).appendTo("#nbateams");
           
         });
 
@@ -83,10 +85,10 @@ $(document).ready(function() {
 </head>
 	<body>
 	<h1>Cafe's in Seattle Web Service</h1>
-		<a href="year" class="category">Cafe in Seattle</a><br />
+		<a href="year" class="category">Cafes in Seattle</a><br />
 		<a href="box" class="category">List of Cafes</a>
-		<h3 id="cafetitle">Title Will Go Here</h3>
-		<div id="cafeseattle">
+		<h3 id="nbatitle">Title Will Go Here</h3>
+		<div id="nbateams">
 			<p>Cafe Title will go here</p>
 		</div>
     <!-- <div class="film">

@@ -1,6 +1,6 @@
 {
 	"title": "Cafe's in Seattle",
-	"cafes":[
+	"teams":[
         {
 				"Name":"Hello Em",
 				"Location":"International District",
